@@ -1,0 +1,416 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivian Center Mat - Materiais de Construção</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #090d16;
+            --bg-card: rgba(22, 28, 45, 0.7);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --primary: #f97316;
+            --primary-hover: #ea580c;
+            --primary-glow: rgba(249, 115, 22, 0.25);
+            --text-title: #f8fafc;
+            --text-body: #94a3b8;
+            --text-dim: #64748b;
+            --accent-green: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(249, 115, 22, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+        }
+
+        /* Glassmorphism Card Base */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-card);
+            border-radius: 24px;
+            padding: 36px;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header / Hero */
+        header {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-glow);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        h1 {
+            color: var(--text-title);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            max-width: 640px;
+            margin: 0 auto 32px auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(249, 115, 22, 0.35);
+        }
+
+        /* Section Titles */
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-header h2 {
+            color: var(--text-title);
+            font-size: 1.35rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Grid de Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            padding: 24px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .service-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--primary-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .service-card h3 {
+            color: var(--text-title);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-body);
+        }
+
+        /* Grid de Informações Corporativas */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .info-item .label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .info-item .value {
+            color: var(--text-title);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            color: var(--accent-green) !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-active::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+        }
+
+        /* Contato & Localização */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-card);
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 4px;
+            transition: color 0.2s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.8rem; }
+            .glass-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header / Hero -->
+    <header class="glass-card">
+        <div class="badge">
+            <span class="badge-dot"></span> Tradição & Excelência desde 1985
+        </div>
+        <h1>Vivian Center Mat</h1>
+        <p class="subtitle">Soluções completas em materiais de construção, reforma e acabamentos para transformar seu projeto em realidade.</p>
+        <div class="cta-group">
+            <a href="https://www.viviancentermat.com.br/" target="_blank" rel="noopener" class="btn btn-primary">Ir para Loja Virtual →</a>
+        </div>
+    </header>
+
+    <!-- Principais Serviços/Destaques -->
+    <section class="glass-card">
+        <div class="section-header">
+            <h2>Nossos Destaques</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">01</div>
+                <h3>Estrutura & Basico</h3>
+                <p>Cimento, tijolos, ferragens e materiais brutos com entrega rápida e logística eficiente.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">02</div>
+                <h3>Acabamentos & Pisos</h3>
+                <p>Variedade em revestimentos, porcelanatos e tintas de alta qualidade para sua obra.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">03</div>
+                <h3>Instalações & Ferramentas</h3>
+                <p>Linha completa de materiais elétricos, hidráulicos e equipamentos profissionais.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informações de Registro corporativo -->
+    <section class="glass-card">
+        <div class="section-header">
+            <h2>Informações Institucionais</h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Razão Social</span>
+                <span class="value">Vivian Materiais de Construcao LTDA</span>
+            </div>
+            <div class="info-item">
+                <span class="label">CNPJ</span>
+                <span class="value">90.344.631/0001-10</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Situação Cadastral</span>
+                <span class="value status-active">Ativa (desde 28/08/2004)</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Tempo de Mercado</span>
+                <span class="value">41 anos (desde 18/07/1985)</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Capital Social</span>
+                <span class="value">R$ 450.000,00</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Porte</span>
+                <span class="value">Sem Enquadramento</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Natureza Jurídica</span>
+                <span class="value">Sociedade Empresária Limitada</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Optante Simples / MEI</span>
+                <span class="value">Não / Não</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Tipo</span>
+                <span class="value">Matriz</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato e Localização -->
+    <section class="glass-card">
+        <div class="section-header">
+            <h2>Atendimento & Localização</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-card">
+                <span style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Canais de Atendimento</span>
+                <div style="margin-top: 12px;">
+                    <span style="font-size: 0.85rem; color: var(--text-body);">Telefones:</span>
+                    <a href="tel:5133861210" class="contact-link">(51) 3386-1210</a>
+                    <a href="tel:5133369688" class="contact-link">(51) 3336-9688</a>
+                </div>
+                <div style="margin-top: 16px;">
+                    <span style="font-size: 0.85rem; color: var(--text-body);">E-mail Directo:</span>
+                    <a href="mailto:site@viviancentermat.com" class="contact-link" style="font-size: 0.95rem;">site@viviancentermat.com</a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <span style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Endereço de Correspondência</span>
+                <div style="margin-top: 12px; font-size: 0.95rem; color: var(--text-title);">
+                    <p><strong>Vivian Materiais de Construcao LTDA</strong></p>
+                    <p style="color: var(--text-body); margin-top: 4px;">Avenida Protasio Alves, 9028</p>
+                    <p style="color: var(--text-body);">Bairro Morro Santana</p>
+                    <p style="color: var(--text-body);">Porto Alegre / RS — CEP 91260-000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© Vivian Materiais de Construcao LTDA. Todos os direitos reservados.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
